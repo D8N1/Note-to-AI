@@ -1,0 +1,12 @@
+/Users/unique/Desktop/note-to-ai/note-to-ai/target/debug/deps/blake3-f62c7188600569cd.d: /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/lib.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/guts.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/hazmat.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/platform.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/ffi_neon.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/portable.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/io.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/join.rs
+
+/Users/unique/Desktop/note-to-ai/note-to-ai/target/debug/deps/libblake3-f62c7188600569cd.rmeta: /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/lib.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/guts.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/hazmat.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/platform.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/ffi_neon.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/portable.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/io.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/join.rs
+
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/lib.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/guts.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/hazmat.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/platform.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/ffi_neon.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/portable.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/io.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.2/src/join.rs:

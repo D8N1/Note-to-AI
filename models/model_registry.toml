@@ -1,0 +1,22 @@
+[models]
+default = "hermes-3-8b"
+
+[models.hermes-3-8b]
+path = "hermes-3-8b.safetensors"
+type = "llm"
+context_size = 8192
+
+[models.llama-3.2-3b]
+path = "llama-3.2-3b.safetensors"
+type = "llm"
+context_size = 4096
+
+[models.whisper-base]
+path = "whisper-base.safetensors"
+type = "whisper"
+
+[models.all-MiniLM-L6-v2]
+path = "all-MiniLM-L6-v2.safetensors"
+type = "embeddings"
+
+
