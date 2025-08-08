@@ -1,0 +1,18 @@
+{
+  "voice_transcription_example": {
+    "command": "cd whisper.cpp && ./build/bin/whisper-cli -m models/ggml-small.bin -f audio.wav",
+    "description": "Transcribe audio file to text with high accuracy"
+  },
+  "text_generation_example": {
+    "command": "ollama run llama3.2:3b 'Summarize the key points about AI safety'",
+    "description": "Generate text response using fastest model"
+  },
+  "code_generation_example": {
+    "command": "ollama run codellama:7b 'Write a Python function to parse JSON'",
+    "description": "Generate code using specialized model"
+  },
+  "summarization_example": {
+    "python_code": "\nfrom transformers import pipeline\nsummarizer = pipeline('summarization', model='sshleifer/distilbart-cnn-12-6', \n                     cache_dir='huggingface_cache', device='cpu')\nsummary = summarizer(long_text, max_length=128, min_length=30)\nprint(summary[0]['summary_text'])\n",
+    "description": "Summarize long text using DistilBART"
+  }
+}

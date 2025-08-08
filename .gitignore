@@ -1,0 +1,70 @@
+# Personal research & notes (keep local, don't push)
+*research*.txt
+*Research*.txt
+Local*.txt
+local*.txt
+
+# Backup files (keep local)
+*.tar.gz
+*.zip
+*backup*
+*Backup*
+
+# Build artifacts
+/target/
+Cargo.lock
+
+# Cache directories
+huggingface_cache/
+.cache/
+cache/
+
+# External dependencies (too large for git)
+arrow-rs/
+
+# IDE and system files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model files (too large for git)
+models/*.safetensors
+models/*.gguf
+models/*.bin
+models/whisper.cpp/models/
+models/ollama/
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+tmp/
+
+# Environment and secrets
+.env
+.env.local
+secrets/
+keys/
+
+# Testing artifacts
+coverage/
+test-results/
+
+# Documentation builds
+docs/build/
+site/
+
+# Rust specific
+**/*.rs.bk
+*.pdb
+
+# Keep important files (override patterns above)
+!models/model_registry.toml
+!models/m1_production_ready.json
+!models/README.md
+!handOFF.txt
+!README.md
+!code_summary.txt

@@ -1,0 +1,79 @@
+{
+  "platform": "M1 MacBook Air",
+  "optimization": "Apple Silicon Native - Fixed",
+  "memory_limit": "8GB",
+  "status": "PRODUCTION READY",
+  "deployment_profiles": {
+    "voice_transcription": {
+      "primary_model": "ggml-small.bin",
+      "fallback_model": "ggml-base.bin",
+      "whisper_path": "whisper.cpp/build/bin/whisper-cli",
+      "metal_backend": true,
+      "threads": 4,
+      "language": "auto"
+    },
+    "text_generation": {
+      "lightweight": {
+        "model": "llama3.2:3b",
+        "num_ctx": 4096,
+        "num_predict": 512,
+        "temperature": 0.7,
+        "response_time": "~5s"
+      },
+      "powerful": {
+        "model": "qwen2.5:7b",
+        "num_ctx": 3072,
+        "num_predict": 256,
+        "temperature": 0.7,
+        "response_time": "~13s"
+      },
+      "memory_limited": {
+        "model": "hermes3:8b",
+        "num_ctx": 2048,
+        "num_predict": 128,
+        "temperature": 0.7,
+        "note": "Use only when other models are busy"
+      }
+    },
+    "code_assistance": {
+      "model": "codellama:7b",
+      "num_ctx": 8192,
+      "temperature": 0.1,
+      "specialized": "Programming tasks"
+    },
+    "embeddings": {
+      "model": "nomic-embed-text:latest",
+      "api_command": "ollama embeddings",
+      "batch_size": 16,
+      "use_case": "Vector search and similarity"
+    },
+    "summarization": {
+      "model": "sshleifer/distilbart-cnn-12-6",
+      "device": "cpu",
+      "max_input_length": 1024,
+      "max_output_length": 128,
+      "cache_dir": "huggingface_cache"
+    }
+  },
+  "performance_recommendations": {
+    "memory_management": "Sequential model loading recommended",
+    "primary_workflow": "Use llama3.2:3b for most tasks",
+    "voice_processing": "Whisper small model for best accuracy",
+    "concurrent_usage": "Avoid running multiple LLMs simultaneously",
+    "optimization_level": "8GB RAM optimized"
+  },
+  "working_models": {
+    "llama3.2:3b": "\u2705 Fast, reliable, memory efficient",
+    "qwen2.5:7b": "\u2705 Good quality, moderate speed",
+    "codellama:7b": "\u2705 Excellent for code generation",
+    "whisper-small": "\u2705 High-quality voice transcription",
+    "whisper-base": "\u2705 Fast voice transcription",
+    "distilbart-cnn": "\u2705 Text summarization (CPU)",
+    "nomic-embed": "\u2705 Text embeddings"
+  },
+  "model_issues_resolved": {
+    "hermes3:8b": "Memory optimized with reduced context",
+    "nomic-embed": "Fixed API usage (embeddings not generate)",
+    "distilbart": "Switched to CPU to avoid MPS conflicts"
+  }
+}

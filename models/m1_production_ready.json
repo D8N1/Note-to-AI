@@ -1,0 +1,101 @@
+{
+  "platform": "M1 MacBook Air",
+  "optimization": "Apple Silicon Native",
+  "memory_limit": "8GB",
+  "status": "PRODUCTION READY",
+  "date_configured": "2025-08-08",
+  "working_models": {
+    "text_generation": {
+      "llama3.2:3b": {
+        "status": "\u2705 READY",
+        "performance": "Fast (5s response)",
+        "memory_usage": "Low (~2GB)",
+        "use_case": "Primary text generation",
+        "command": "ollama run llama3.2:3b"
+      },
+      "qwen2.5:7b": {
+        "status": "\u2705 READY",
+        "performance": "Good (13s response)",
+        "memory_usage": "Medium (~4GB)",
+        "use_case": "High-quality responses",
+        "command": "ollama run qwen2.5:7b"
+      },
+      "codellama:7b": {
+        "status": "\u2705 READY",
+        "performance": "Fast (6s response)",
+        "memory_usage": "Medium (~4GB)",
+        "use_case": "Code generation",
+        "command": "ollama run codellama:7b"
+      }
+    },
+    "voice_transcription": {
+      "whisper-small": {
+        "status": "\u2705 READY",
+        "model_file": "whisper.cpp/models/ggml-small.bin",
+        "size": "465MB",
+        "quality": "High accuracy",
+        "metal_optimized": true,
+        "command": "whisper.cpp/build/bin/whisper-cli -m whisper.cpp/models/ggml-small.bin"
+      },
+      "whisper-base": {
+        "status": "\u2705 READY",
+        "model_file": "whisper.cpp/models/ggml-base.bin",
+        "size": "141MB",
+        "quality": "Good accuracy, faster",
+        "metal_optimized": true,
+        "command": "whisper.cpp/build/bin/whisper-cli -m whisper.cpp/models/ggml-base.bin"
+      }
+    },
+    "summarization": {
+      "distilbart-cnn": {
+        "status": "\u2705 READY (CPU mode)",
+        "model_path": "huggingface_cache/models--sshleifer--distilbart-cnn-12-6",
+        "size": "3.8GB",
+        "device": "cpu",
+        "note": "Use CPU to avoid MPS conflicts"
+      }
+    },
+    "embeddings": {
+      "nomic-embed": {
+        "status": "\u2705 READY",
+        "model": "nomic-embed-text:latest",
+        "size": "274MB",
+        "note": "Use with custom embedding API, not ollama generate"
+      }
+    }
+  },
+  "deployment_recommendations": {
+    "primary_workflow": {
+      "voice_input": "whisper-small (best accuracy)",
+      "text_generation": "llama3.2:3b (fastest, most reliable)",
+      "code_tasks": "codellama:7b",
+      "summarization": "distilbart-cnn (CPU mode)",
+      "embeddings": "nomic-embed-text"
+    },
+    "memory_management": {
+      "sequential_loading": "Load one model at a time",
+      "avoid_concurrent": "Don't run multiple LLMs simultaneously",
+      "monitor_usage": "Use Activity Monitor to track RAM",
+      "swap_models": "Stop unused models with 'ollama stop'"
+    },
+    "performance_optimization": {
+      "keep_alive": "Use short keepalive for memory efficiency",
+      "context_length": "Limit context to 2048-4096 tokens",
+      "batch_processing": "Process multiple requests sequentially"
+    }
+  },
+  "signal_workflow_ready": {
+    "voice_transcription": "\u2705 Whisper.cpp with Metal backend",
+    "text_processing": "\u2705 Multiple LLM options available",
+    "summarization": "\u2705 DistilBART for content summarization",
+    "embeddings": "\u2705 Nomic for vector search",
+    "integration_status": "Ready for Signal protocol integration"
+  },
+  "next_steps": {
+    "1": "Implement Signal integration modules",
+    "2": "Create audio processing pipeline",
+    "3": "Build RAG system with embeddings",
+    "4": "Integrate with Obsidian vault storage",
+    "5": "Add quantum-resistant cryptography"
+  }
+}

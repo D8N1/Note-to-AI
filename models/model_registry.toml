@@ -1,0 +1,132 @@
+# Optimized Model Registry for M1 MacBook Air Multi-Agent Systems
+# Based on 2025 specialized AI model research
+
+[deployment]
+platform = "m1_macos"
+memory_budget = "4-8GB"
+quantization_strategy = "Q4_K_M"
+orchestration_framework = "ollama"
+
+[models]
+# Primary models for specialized tasks
+default = "hermes-3-8b"
+summarization = "distilbart-cnn"
+transcription = "whisper-distil-large-v3"
+question_generation = "lmqg-t5-small"
+embeddings = "all-MiniLM-L6-v2"
+
+# Core Language Models
+[models.hermes-3-8b]
+path = "hermes-3-8b.safetensors"
+type = "llm"
+context_size = 8192
+quantization = "Q4_0"
+memory_usage_mb = 6144
+specialization = "agentic_capabilities"
+performance_tokens_per_sec = 12
+description = "Advanced agentic model with steering mechanisms for multi-agent orchestration"
+
+[models.llama-3.2-3b]
+path = "llama-3.2-3b.safetensors"
+type = "llm"
+context_size = 4096
+quantization = "Q4_K_M"
+memory_usage_mb = 2048
+backup_model = true
+description = "Lightweight backup model for resource-constrained scenarios"
+
+# Specialized Models (recommended additions)
+[models.distilbart-cnn]
+path = "distilbart-cnn-q4k.safetensors"
+type = "summarization"
+context_size = 1024
+quantization = "Q4_K"
+memory_usage_mb = 4096
+performance_tokens_per_sec = 25
+rouge_1_score = 0.44
+specialization = "document_summarization"
+description = "97% of full BART performance, optimized for morning briefings and document processing"
+
+[models.whisper-distil-large-v3]
+path = "whisper-distil-large-v3-q5_1.safetensors"
+type = "whisper"
+quantization = "Q5_1"
+memory_usage_mb = 2048
+real_time_factor = 13.3
+accuracy = "high"
+specialization = "voice_transcription"
+backend = "metal"
+description = "Optimal voice transcription for Signal voice notes with M1 optimization"
+
+[models.lmqg-t5-small]
+path = "lmqg-t5-small-e2e-qag.safetensors"
+type = "question_generation"
+parameters = "60M"
+context_size = 512
+memory_usage_mb = 500
+performance_tokens_per_sec = 100
+specialization = "prompt_generation"
+description = "Language Model Question Generation for high-quality question and prompt creation"
+
+[models.t5-small-unified]
+path = "t5-small-unified.safetensors"
+type = "text2text"
+parameters = "242M"
+context_size = 512
+quantization = "Q4_K"
+memory_usage_mb = 2048
+specialization = "structured_briefings"
+description = "Versatile text-to-text model for structured briefing generation"
+
+# Embeddings and Retrieval
+[models.all-MiniLM-L6-v2]
+path = "all-MiniLM-L6-v2.safetensors"
+type = "embeddings"
+dimensions = 384
+memory_usage_mb = 128
+specialization = "semantic_search"
+description = "Primary embedding model for RAG and semantic search"
+
+# Alternative Lightweight Models
+[models.vosk-small-en]
+path = "vosk-small-en.safetensors"
+type = "whisper_lightweight"
+memory_usage_mb = 200
+accuracy = "medium"
+specialization = "embedded_transcription"
+description = "Ultra-lightweight voice transcription for resource-constrained scenarios"
+
+[models.pegasus-xsum]
+path = "pegasus-xsum-q4k.safetensors"
+type = "summarization_news"
+quantization = "Q4_K"
+memory_usage_mb = 6144
+rouge_1_score = 0.45
+specialization = "news_summarization"
+description = "Specialized abstractive summarization for news and articles"
+
+# Configuration Profiles
+[profiles.morning_briefing]
+models = ["distilbart-cnn", "all-MiniLM-L6-v2", "t5-small-unified"]
+memory_total_mb = 6144
+use_case = "Document summarization and structured briefing generation"
+
+[profiles.voice_processing]
+models = ["whisper-distil-large-v3", "lmqg-t5-small"]
+memory_total_mb = 2548
+use_case = "Voice note transcription and follow-up question generation"
+
+[profiles.full_deployment]
+models = ["hermes-3-8b", "distilbart-cnn", "whisper-distil-large-v3", "lmqg-t5-small"]
+memory_total_mb = 12800
+use_case = "Complete multi-agent system with all specialized capabilities"
+
+[optimization]
+unified_memory_architecture = true
+metal_backend = true
+coreml_integration = true
+kv_cache_memory_reduction = 0.375
+zero_copy_operations = true
+dynamic_model_loading = true
+
+
