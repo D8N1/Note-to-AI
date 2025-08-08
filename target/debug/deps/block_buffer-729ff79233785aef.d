@@ -1,0 +1,8 @@
+/Users/unique/Desktop/note-to-ai/note-to-ai/target/debug/deps/block_buffer-729ff79233785aef.d: /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/lib.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/sealed.rs
+
+/Users/unique/Desktop/note-to-ai/note-to-ai/target/debug/deps/libblock_buffer-729ff79233785aef.rlib: /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/lib.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/sealed.rs
+
+/Users/unique/Desktop/note-to-ai/note-to-ai/target/debug/deps/libblock_buffer-729ff79233785aef.rmeta: /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/lib.rs /Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/sealed.rs
+
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/lib.rs:
+/Users/unique/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.10.4/src/sealed.rs:
