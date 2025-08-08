@@ -50,16 +50,14 @@ pub struct ContextBuilder {
 
 impl ContextBuilder {
     pub fn new() -> Self {
-        let mut builder = Self {
+        let builder = Self {
             documents: Arc::new(RwLock::new(HashMap::new())),
             embeddings_cache: Arc::new(RwLock::new(HashMap::new())),
             context_templates: Arc::new(RwLock::new(HashMap::new())),
         };
         
-        // Initialize default templates
-        tokio::spawn(async move {
-            builder.init_default_templates().await;
-        });
+        // TODO: Initialize default templates in a better way
+        // For now, just return the builder without async initialization
         
         builder
     }
@@ -175,13 +173,14 @@ impl ContextBuilder {
 
     /// Simple text-based similarity fallback
     fn text_similarity(&self, query: &str, content: &str) -> f32 {
-        let query_words: std::collections::HashSet<&str> = query
-            .to_lowercase()
+        let query_lower = query.to_lowercase();
+        let content_lower = content.to_lowercase();
+        
+        let query_words: std::collections::HashSet<&str> = query_lower
             .split_whitespace()
             .collect();
         
-        let content_words: std::collections::HashSet<&str> = content
-            .to_lowercase()
+        let content_words: std::collections::HashSet<&str> = content_lower
             .split_whitespace()
             .collect();
         

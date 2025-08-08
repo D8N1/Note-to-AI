@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 use anyhow::{Result, Context};
 use clap::{Parser, Subcommand};
-use tokio::signal;
+use tokio::signal as tokio_signal;
 use tracing::{info, error, warn};
 use tracing_subscriber::{EnvFilter, fmt, prelude::*};
 
@@ -9,7 +9,7 @@ mod config;
 mod logger;
 mod vault;
 mod ai;
-mod signal;
+mod signal_integration;  // Renamed to avoid conflict
 mod crypto;
 mod identity;
 mod swarm;
@@ -133,10 +133,9 @@ enum SignalAction {
 /// Main application state
 pub struct NoteToAI {
     config: Settings,
-    storage: HybridStorageEngine,
-    ai: ai::AI,
-    signal: signal::Signal,
-    scheduler: scheduler::Scheduler,
+    // TODO: Re-add scheduler and storage when they're ready
+    // scheduler: scheduler::Scheduler,
+    // storage: HybridStorageEngine,
 }
 
 impl NoteToAI {
@@ -145,41 +144,24 @@ impl NoteToAI {
         info!("Initializing note-to-ai");
         
         // Load configuration
-        let config = Settings::load(config_path)
+        let config = Settings::load(config_path.to_str().unwrap())
             .context("Failed to load configuration")?;
         
-        // Initialize hybrid storage
+        // TODO: Re-enable hybrid storage once Arrow conflicts are resolved
+        /*
         let storage_config = StorageConfig {
             base_path: config.storage.base_path.clone(),
             duckdb_config: config.storage.duckdb.clone().into(),
             lance_config: config.storage.lance.clone().into(),
-            cache_config: Default::default(),
-            performance_config: Default::default(),
         };
         
         let storage = HybridStorageEngine::new(storage_config).await
             .context("Failed to initialize storage engine")?;
-        storage.initialize().await
-            .context("Failed to initialize storage")?;
-        
-        // Initialize AI system
-        let ai = ai::AI::new()
-            .context("Failed to initialize AI system")?;
-        
-        // Initialize Signal client
-        let signal = signal::Signal::new()
-            .context("Failed to initialize Signal client")?;
-        
-        // Initialize task scheduler
-        let scheduler = scheduler::Scheduler::new()
-            .context("Failed to initialize scheduler")?;
+        */
         
         Ok(Self {
             config,
-            storage,
-            ai,
-            signal,
-            scheduler,
+            // storage,
         })
     }
     
@@ -187,9 +169,9 @@ impl NoteToAI {
     pub async fn start(&mut self, skip_signal: bool, skip_ai: bool) -> Result<()> {
         info!("Starting note-to-ai service");
         
-        // Start scheduler
-        self.scheduler.start().await
-            .context("Failed to start scheduler")?;
+        // TODO: Start scheduler when it's implemented
+        // self.scheduler.start().await
+        //     .context("Failed to start scheduler")?;
         
         // Load AI models (unless skipped)
         if !skip_ai {
@@ -243,22 +225,10 @@ impl NoteToAI {
         if semantic {
             // TODO: Generate embeddings for query and search vectors
             info!("Performing semantic search...");
+            println!("Semantic search not yet implemented");
         } else {
-            // Perform text search
-            let results = self.storage.text_search(text, limit).await?;
-            
-            println!("Found {} results:", results.len());
-            for (i, result) in results.iter().enumerate() {
-                println!("{}. {} (score: {:.2})", 
-                    i + 1, 
-                    result.document.metadata.title,
-                    result.score
-                );
-                if let Some(snippet) = &result.document.snippet {
-                    println!("   {}", snippet);
-                }
-                println!();
-            }
+            // TODO: Perform text search when storage is implemented
+            println!("Text search found 0 results (storage not yet implemented):");
         }
         
         Ok(())
@@ -283,12 +253,12 @@ impl NoteToAI {
         println!("===========================");
         
         // Storage statistics
-        let stats = self.storage.get_stats().await?;
+        // TODO: Show storage stats when storage is implemented
         println!("📊 Storage:");
-        println!("  Documents: {}", stats.total_documents);
-        println!("  Embeddings: {}", stats.total_embeddings);
-        println!("  Storage size: {:.2} MB", stats.storage_size_bytes as f64 / 1024.0 / 1024.0);
-        println!("  Avg search time: {:.2}ms", stats.performance_metrics.avg_search_latency_ms);
+        println!("  Documents: 0 (storage not implemented)");
+        println!("  Embeddings: 0 (storage not implemented)");
+        println!("  Storage size: 0.00 MB (storage not implemented)");
+        println!("  Avg search time: 0.00ms (storage not implemented)");
         
         // AI status
         println!("\n🧠 AI Models:");
@@ -310,9 +280,9 @@ impl NoteToAI {
     
     /// Wait for shutdown signal
     async fn wait_for_shutdown(&self) {
-        let mut sigterm = signal::unix::signal(signal::unix::SignalKind::terminate())
+        let mut sigterm = tokio_signal::unix::signal(tokio_signal::unix::SignalKind::terminate())
             .expect("Failed to create SIGTERM handler");
-        let mut sigint = signal::unix::signal(signal::unix::SignalKind::interrupt())
+        let mut sigint = tokio_signal::unix::signal(tokio_signal::unix::SignalKind::interrupt())
             .expect("Failed to create SIGINT handler");
         
         tokio::select! {

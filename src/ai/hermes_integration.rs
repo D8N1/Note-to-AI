@@ -351,7 +351,7 @@ impl HermesIntegration {
             if !conversation.messages.is_empty() && conversation.messages[0].role == "system" {
                 let system_msg = conversation.messages[0].clone();
                 conversation.messages.clear();
-                conversation.messages.push(system_msg);
+                conversation.messages.push(system_msg.clone());
                 conversation.total_tokens = system_msg.content.len() / 4;
             } else {
                 conversation.messages.clear();

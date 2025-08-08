@@ -17,7 +17,7 @@ note-to-ai bridges the gap between your casual voice notes and professional-grad
 5. **🔍 Discover**: Semantic search across your entire knowledge base reveals hidden patterns
 
 ### Why This Matters
-- **Privacy First**: Everything happens locally. Your thoughts never leave your device.
+- **Privacy First**: Protected by Signal's proven encryption suite - your thoughts are secured in transit and processed locally.
 - **Intelligence Amplification**: Transform scattered thoughts into structured knowledge
 - **Effortless Capture**: Use the app you already have (Signal) as your input interface
 - **Professional Output**: Generate executive-level briefings from casual voice notes
@@ -43,7 +43,8 @@ note-to-ai bridges the gap between your casual voice notes and professional-grad
 - **Knowledge Graphs**: Visual connections between ideas and topics
 
 ### 🔐 Privacy & Security
-- **Local Processing**: Zero cloud dependencies, all AI runs on your M1 Mac
+- **Signal-Protected Communication**: All data in transit secured by Signal's proven E2E encryption
+- **Local AI Processing**: Zero cloud dependencies, all AI runs on your M1 Mac
 - **Quantum-Resistant Encryption**: ML-KEM + Signal hybrid cryptography
 - **IPFS Private Swarm**: Distributed sync without central servers
 - **zkPassport Integration**: Identity verification with zero-knowledge proofs
@@ -153,7 +154,8 @@ Signal "Note to Self"
 ```
 
 ### Privacy Architecture
-- **Zero Cloud Dependency**: All processing happens locally on your M1 Mac
+- **Signal-Encrypted Transport**: All communication secured by Signal's proven E2E encryption
+- **Local AI Processing**: All AI inference happens on your M1 Mac
 - **Quantum-Resistant**: ML-KEM encryption for future-proof security
 - **Distributed Sync**: IPFS private swarm for multi-device access without servers
 - **Identity Sovereignty**: zkPassport integration for decentralized identity

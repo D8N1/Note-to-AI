@@ -1,36 +1,34 @@
-[storage]
-base_path = "./storage"
-
-[storage.duckdb]
-database_path = "./storage/metadata.duckdb"
-memory_limit = 1073741824  # 1GB
-enable_parquet_cache = true
-max_cache_size_mb = 512
-wal_mode = true
-
-[storage.lance]
-dataset_path = "./storage/vectors.lance"
-vector_dimension = 384
-index_type = "IVF"
-num_partitions = 256
-enable_compression = true
-
-[models]
-whisper = "whisper-base"
-embeddings = "sentence-transformers/all-MiniLM-L6-v2"  
-llm = "NousResearch/Hermes-3-Llama-3.1-8B"
-fallback_llm = "microsoft/Phi-3-mini-4k-instruct"
-
-[signal]
-data_dir = "./signal_data"
-auto_transcribe = true
-respond_to_queries = true
-
-[ai]
-max_context_length = 4096
-temperature = 0.7
-enable_streaming = true
-
 [logging]
 level = "info"
 file = "./logs/note-to-ai.log"
+
+[vault]
+path = "./vault"
+auto_sync = true
+index_interval = 300  # seconds
+cache_size = 1000     # number of documents
+
+[ai]
+model_path = "./models"
+embeddings_path = "./models/embeddings"
+context_window = 4096
+model_registry = "./models/model_registry.toml"
+
+[crypto]
+pq_enabled = true
+key_path = "./keys"
+hybrid_mode = true
+
+[swarm]
+bootstrap_nodes = []
+private_key_path = "./keys/private.key"
+swarm_key_path = "./keys/swarm.key"
+
+[signal]
+enabled = true
+phone_number = ""
+device_id = 1
+
+[database]
+path = "./database.db"
+encrypted = true

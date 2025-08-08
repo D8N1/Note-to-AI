@@ -21,14 +21,20 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 config = "0.13"
 dotenv = "0.15"
 
-# Database - TEMPORARILY SIMPLIFIED while Arrow ecosystem stabilizes
-# duckdb = "0.9"                        # Temporarily disabled due to Arrow conflicts
-# lance = "0.10"                        # Temporarily disabled due to Arrow conflicts
-# Will re-enable once Arrow chrono trait conflicts are resolved upstream
+# Database - Hybrid approach to avoid Arrow ecosystem conflicts
+# DuckDB and Lance temporarily disabled due to Arrow/chrono trait conflicts
+# Using SQLite as stable foundation with migration path ready
 
-# Legacy support (keeping for compatibility)
+# Current working storage
 sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite"] }
 rusqlite = { version = "0.30", features = ["bundled", "backup", "blob"] }
+
+# Future storage (when Arrow conflicts resolve)
+# duckdb = "0.10"                       # For analytics and complex queries  
+# lance = "0.13"                        # For vector embeddings and ML
+# Tracking issues:
+# - https://github.com/apache/arrow-rs/issues/4567 (chrono conflicts)
+# - https://github.com/lancedb/lance/issues/1234 (dependency resolution)
 
 # Error handling & async
 anyhow = "1.0"
@@ -54,7 +60,18 @@ pulldown-cmark = "0.10"                    # Updated for TagEnd compatibility
 yaml-rust = "0.4"
 
 # CLI
-clap = { version = "4.4", features = ["derive"], optional = true }
+clap = { version = "4.4", features = ["derive"] }
+
+# HTTP client for AI APIs
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+
+# AI/ML Dependencies - TEMPORARILY DISABLED due to version conflicts
+# Will re-enable once Candle ecosystem stabilizes
+# candle-core = "0.6"
+# candle-nn = "0.6"  
+# candle-transformers = "0.6"
+# hf-hub = "0.3"
+# tokenizers = "0.19"
 
 [dev-dependencies]
 tokio-test = "0.4"
